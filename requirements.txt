@@ -9,5 +9,8 @@ pandas>=2.0.0
 # Interactive maps
 folium>=0.14.0
 
+# Excel file creation (required for to_excel() function)
+openpyxl>=3.1.0
+
 # Additional Python standard libraries (included with Python)
 # io - built-in (for BytesIO)
