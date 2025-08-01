@@ -1,0 +1,13 @@
+# Chemical Business Mapping App Requirements
+
+# Core Streamlit framework
+streamlit>=1.29.0
+
+# Data manipulation
+pandas>=2.0.0
+
+# Interactive maps
+folium>=0.14.0
+
+# Additional Python standard libraries (included with Python)
+# io - built-in (for BytesIO)
