@@ -26,9 +26,9 @@ st.markdown(
 def load_data():
     try:
         # Try to load from the same directory as the script
-        return pd.read_csv('2023_us.csv', low_memory=False)
+        return pd.read_csv('2024_us.csv', low_memory=False)
     except FileNotFoundError:
-        st.error("Data file '2023_us.csv' not found. Please ensure the file is in the same directory as this script.")
+        st.error("Data file '2024_us.csv' not found. Please ensure the file is in the same directory as this script.")
         st.stop()
 
 us_data_df = load_data()
@@ -81,8 +81,6 @@ if st.session_state.show_map:
         file_name="filtered_data.xlsx",
         mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
     )
-    # prospects buffer will be written later, so create placeholder here
-    # we'll overwrite buf_prospect below after computing prospects_df
 
 st.title("Chemical Business Mapping")
 
@@ -118,18 +116,6 @@ if st.session_state.show_map:
     
     # Render map
     st.components.v1.html(m._repr_html_(), height=700)
-
-    # Create empty prospects_df for download (no trajectory functionality)
-    prospects_df = pd.DataFrame()
-    buf_prospect = BytesIO()
-    prospects_df.to_excel(buf_prospect, index=False)
-    buf_prospect.seek(0)
-    st.sidebar.download_button(
-        "Download Nearby Companies",
-        buf_prospect,
-        file_name="nearby_companies.xlsx",
-        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-    )
 
 else:
     st.info("Select filters and click **Generate Map** to begin.")
